@@ -45,7 +45,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class DetectorActivity extends CameraActivity implements OnImageAvailableListener {
+public class DetectorActivity extends BaseCameraActivity implements OnImageAvailableListener {
   private static final Logger LOGGER = new Logger();
 
   // Configuration values for the prepackaged SSD model.
@@ -116,9 +116,6 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
     previewHeight = size.getHeight();
 
     sensorOrientation = rotation - getScreenOrientation();
-    LOGGER.i("Camera orientation relative to screen canvas: %d", sensorOrientation);
-
-    LOGGER.i("Initializing at size %dx%d", previewWidth, previewHeight);
     rgbFrameBitmap = Bitmap.createBitmap(previewWidth, previewHeight, Config.ARGB_8888);
     croppedBitmap = Bitmap.createBitmap(cropSize, cropSize, Config.ARGB_8888);
 

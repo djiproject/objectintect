@@ -53,7 +53,7 @@ import java.nio.ByteBuffer;
 import org.tensorflow.lite.examples.detection.env.ImageUtils;
 import org.tensorflow.lite.examples.detection.env.Logger;
 
-public abstract class CameraActivity extends AppCompatActivity
+public abstract class BaseCameraActivity extends AppCompatActivity
     implements OnImageAvailableListener,
         Camera.PreviewCallback,
         CompoundButton.OnCheckedChangeListener,
@@ -367,7 +367,7 @@ public abstract class CameraActivity extends AppCompatActivity
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       if (shouldShowRequestPermissionRationale(PERMISSION_CAMERA)) {
         Toast.makeText(
-                CameraActivity.this,
+                BaseCameraActivity.this,
                 "Camera permission is required for this demo",
                 Toast.LENGTH_LONG)
             .show();
@@ -435,7 +435,7 @@ public abstract class CameraActivity extends AppCompatActivity
                 public void onPreviewSizeChosen(final Size size, final int rotation) {
                   previewHeight = size.getHeight();
                   previewWidth = size.getWidth();
-                  CameraActivity.this.onPreviewSizeChosen(size, rotation);
+                  BaseCameraActivity.this.onPreviewSizeChosen(size, rotation);
                 }
               },
               this,
